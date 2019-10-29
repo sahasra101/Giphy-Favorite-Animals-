@@ -26,8 +26,6 @@ function displayanimalInfo() {
             console.log(data.data[i].images.fixed_height_small_still.url);
             console.log(data.data[i].images.fixed_height_small.url);
 
-
-
             var stillImgURL = data.data[i].images.fixed_height_small_still.url;
             var animateImgURL = data.data[i].images.fixed_height_small.url;
             var rating = data.data[i].rating;
@@ -44,7 +42,6 @@ function displayanimalInfo() {
 
             var ratingP = $("<h4>").text("Rating: " + rating).addClass("rating");
 
-
             // Appending the image
             animalDiv.append(image);
             animalDiv.append(ratingP);
@@ -53,24 +50,42 @@ function displayanimalInfo() {
             $("#animals-view").prepend(animalDiv);
         }
     });
-    // function to alternate btwn animate and still GIFs
-    $(document).on("click", ".gif", function () {
 
-        // the different states for the GIFs
-        var state = $(this).attr("data-state");
-        var animateSrc = $(this).attr("data-animate");
-        var stillSrc = $(this).attr("data-still");
+    
+    // // function to alternate btwn animate and still GIFs
+    // $(document).on("click", ".gif", function () {
 
-        if (state === "still") {
-            $(this).attr("src", animateSrc);
-            $(this).attr("data-state", "animate");
-        } else if (state === "animate") {
-            $(this).attr("src", stillSrc);
-            $(this).attr("data-state", "still");
-        }
-    });
+    //     // the different states for the GIFs
+    //     var state = $(this).attr("data-state");
+    //     var animateSrc = $(this).attr("data-animate");
+    //     var stillSrc = $(this).attr("data-still");
+
+    //     if (state === "still") {
+    //         $(this).attr("src", animateSrc);
+    //         $(this).attr("data-state", "animate");
+    //     } else if (state === "animate") {
+    //         $(this).attr("src", stillSrc);
+    //         $(this).attr("data-state", "still");
+    //     }
+    // });
 }
 
+// function to alternate btwn animate and still GIFs - outside of the display animals function so that the still animate button works for all clicks and api retrievals
+$(document).on("click", ".gif", function () {
+
+    // the different states for the GIFs
+    var state = $(this).attr("data-state");
+    var animateSrc = $(this).attr("data-animate");
+    var stillSrc = $(this).attr("data-still");
+
+    if (state === "still") {
+        $(this).attr("src", animateSrc);
+        $(this).attr("data-state", "animate");
+    } else if (state === "animate") {
+        $(this).attr("src", stillSrc);
+        $(this).attr("data-state", "still");
+    }
+});
 // Function for displaying animal data
 function renderButtons() {
 
