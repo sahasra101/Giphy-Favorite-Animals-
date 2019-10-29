@@ -11,9 +11,17 @@ button, div, form, input {
     margin: 0px;
 }    
 
+#animals-view {
+    border: black, 3px;
+}
+
 #animals-view, .animal {
     float: left;
 }    
+
+#animalInputBtn {
+    font: 700;
+}
 
 #animal-form {
     float: right;
