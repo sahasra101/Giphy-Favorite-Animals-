@@ -1,0 +1,15 @@
+body {
+    background-color: blueviolet;
+}
+
+button, div, form, input {
+      margin: 10px;
+    }
+
+#animals-view {
+    float: left;
+}    
+
+#animal-form {
+    float: right;
+}
