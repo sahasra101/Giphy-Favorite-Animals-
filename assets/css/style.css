@@ -4,7 +4,12 @@ body {
 
 button, div, form, input {
       margin: 10px;
+      text-align: center;
     }
+
+.rating {
+    margin: 0px;
+}    
 
 #animals-view, .animal {
     float: left;

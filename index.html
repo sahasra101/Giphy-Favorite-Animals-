@@ -54,22 +54,33 @@
 
           console.log(data);
 
-          
+
           // Retrieving the URL for the image
           for (i = 0; i < 11; i++) {
-            
+
             // Creating a div to hold the animal
             var animalDiv = $("<div class='animal'>");
             console.log(data.data[i].rating)
+            console.log(data.data[i].images.fixed_height_small_still.url);
             console.log(data.data[i].images.fixed_height_small.url);
 
-            var imgURL = data.data[i].images.fixed_height_small.url;
+
+
+            var stillImgURL = data.data[i].images.fixed_height_small_still.url;
+            var animateImgURL = data.data[i].images.fixed_height_small.url;
             var rating = data.data[i].rating;
 
             // Creating an element to hold the image
-            var image = $("<img>").attr("src", imgURL);
+            var image = $("<img>");
+            image.attr("src", stillImgURL).addClass("gif");
+            image.attr("data-state", "still");
+            image.attr("data-animate", animateImgURL);
+            image.attr("data-still", stillImgURL);
+            console.log(image);
 
-            var ratingP = $("<p>").text("Rating: " + rating);
+            // give attribute to the img element: 
+
+            var ratingP = $("<h4>").text("Rating: " + rating).addClass("rating");
 
 
             // Appending the image
@@ -81,7 +92,24 @@
           }
         });
 
+        $(document).on("click", ".gif", function () {
+
+          var state = $(this).attr("data-state");
+          var animateSrc = $(this).attr("data-animate");
+          var stillSrc = $(this).attr("data-still");
+
+          if (state === "still") {
+            $(this).attr("src", animateSrc);
+            $(this).attr("data-state", "animate");
+          } else if (state === "animate") {
+            $(this).attr("src", stillSrc);
+            $(this).attr("data-state", "still");
+          }
+
+        });
       }
+
+
 
       // Function for displaying animal data
       function renderButtons() {
@@ -93,27 +121,26 @@
         // Looping through the array of animals
         for (var i = 0; i < animals.length; i++) {
 
-          // Then dynamicaly generating buttons for each animal in the array
-          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-          var a = $("<button>");
+          // coding to create a button from each index in the animals array
+          var b = $("<button>");
           // Adding a class of animal-btn to our button
-          a.addClass("animal-btn");
+          b.addClass("animal-btn");
           // Adding a data-attribute
-          a.attr("data-name", animals[i]);
+          b.attr("data-name", animals[i]);
           // Providing the initial button text
-          a.text(animals[i]);
+          b.text(animals[i]);
           // Adding the button to the buttons-view div
-          $("#buttons-view").append(a);
+          $("#buttons-view").append(b);
         }
       }
 
       // This function handles events where a animal button is clicked
       $("#add-animal").on("click", function (event) {
         event.preventDefault();
-        // This line grabs the input from the textbox
+        // This line retrieves the input from the textbox
         var animal = $("#animal-input").val().trim();
 
-        // Adding animal from the textbox to our array
+        // This method adds the new animal from the textbox to the animals array
         animals.push(animal);
 
         // Calling renderButtons which handles the processing of our animal array
