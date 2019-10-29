@@ -54,12 +54,12 @@
 
           console.log(data);
 
-          // Creating a div to hold the animal
-          var animalDiv = $("<div class='animal'>");
-
+          
           // Retrieving the URL for the image
           for (i = 0; i < 11; i++) {
-
+            
+            // Creating a div to hold the animal
+            var animalDiv = $("<div class='animal'>");
             console.log(data.data[i].rating)
             console.log(data.data[i].images.fixed_height_small.url);
 
