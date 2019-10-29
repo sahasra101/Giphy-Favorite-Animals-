@@ -5,7 +5,7 @@ Note that some pictures are of items that are named after the animal like a spor
 
 I continue to develop excellent coding skills from the homework assignment. 
 
-link to the Trivia Game webpage:  https://sahasra101.github.io/Giphy-Favorite-Animals-/
+link to the Giphy Favorite Animals webpage:  https://sahasra101.github.io/Giphy-Favorite-Animals-/
 
 link to my portfolio with 4 recent projects listed: https://sahasra101.github.io/Responsive-Portfolio/
 
