@@ -6,7 +6,7 @@ button, div, form, input {
       margin: 10px;
     }
 
-#animals-view {
+#animals-view, .animal {
     float: left;
 }    
 
