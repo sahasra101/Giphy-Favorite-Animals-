@@ -13,11 +13,9 @@
           method: "GET"
         }).then(function (data) {
 
-
           //  $("#JSONdata").text(JSON.stringify(data)); initially coded to look at data on webpage vs console.log
 
           console.log(data);
-
 
           // Retrieving the URL for the image
           for (i = 0; i < 11; i++) {
